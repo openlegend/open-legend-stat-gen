@@ -18,32 +18,47 @@ function Dice(die, count) {
     // Called by Roll
     // returns an array
     var total = [];
-    for (var i = 0; i < count; i++) { total.push(singleRoll(die)); }
+    var explosions = 0;
+    // roll the first set of dice
+    for (var i = 0; i < count; i++) {
+        total.push( Math.floor(Math.random() * die) + 1 );
+    }
+
+    explosions = total.filter( function ( val ) { return val === die } ).length;
+    if ( explosions > 0 ) {
+        for (var i = 0; i < explosions; i++) {
+            total.push(singleRoll(die));
+        }
+    }
+
     return total;
 }
 
-function Roll(die,count,advantage)
+function Roll(die,count,advantage) {
         // Roll countDdie with an advantage/disadvantage
         // advanatge: 0 - none, >0 advantage, < 0 disadvantahe
-{
+     // var = resultsArray = [];
      // sanitize
      die=Math.floor(Number(die));
      count=Math.floor(Number(count));
      advantage=Math.floor(Number(advantage));
      // do the roll
-     if (advantage > 0)      { return Sum(Dice(die, count+advantage).sort(function(a, b) { return b - a; }).slice(0, count)); }
-     else if (advantage < 0) { return Sum(Dice(die, count+(-1*advantage)).sort(function(a, b) { return a - b; }).slice(0, count)); }
+     if (advantage > 0) {
+        return Sum(Dice(die, count+advantage).sort(function(a, b) { return b - a; }).slice(0, count));
+    } else if (advantage < 0) {
+        return Sum(Dice(die, count+(-1*advantage)).sort(function(a, b) { return a - b; }).slice(0, count));
+    }
      return Sum(Dice(die, count));
 }
 
 function Sum(aIn) {
-// Sum an array
-var total = 0;
-for (var i in aIn) { total += aIn[i]; }
-return total }
+    // Sum an array
+    var total = 0;
+    for (var i in aIn) { total += aIn[i]; }
+    return total
+}
 
-function buildDice()
-{
+function buildDice() {
 // Structure used for DiceBox
    var dice = [];
    for (var j = 0; j < DiceBox; j++) {
@@ -93,11 +108,10 @@ function totals_iter(dice,rep,divout) {
                         function (){totals_iter2(dice,rep,divout); });
 }
 
-function totals_iter2(dice,rep,divout)
+function totals_iter2(dice,rep,divout) {
         // dice - The array of arrays - dicebag
         // rep - scalar - repitition count
         // divout - The jquery object for the output div
-{
     var dieTotal = 0; // count how many dice
     var colate = [];  // where I am keeping rolled dice data
 
