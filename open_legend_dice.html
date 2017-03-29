@@ -1,0 +1,64 @@
+
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Rollme</title>
+    <script src="./jquery-2.1.4.min.js"></script>
+    <script src="./roll.js"></script>
+    <link href="./roll.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <h1>Open Legend Exploding Dice stat generator</h1>
+    <div class="clear">&nbsp;</div>
+    <div class="padme">
+        <div class="contain">
+            <div class="clear">&nbsp;</div>
+            <div class="head">Dice:</div>
+            <div class="clear">&nbsp;</div>
+            <div id="dicebox">
+                <script>
+                    $(window).ready( function () {
+                        addDie(20, 1);
+                    });
+                </script><div style="margin-bottom: 5px;" id="roll0"><div class="smallc"><input name="num0" id="num0" type="text" class="small" value="1">D</div><div class="smallc"><input name="die0" id="die0" type="text" class="small" value="20"> with&nbsp; </div><div class="smallc"><input type="text" id="adv0" name="adv0" value="1" class="small"> Dice of </div><div class="boxme"><input type="radio" name="ad0" value="0" checked="">None</div><div class="boxme"><input type="radio" name="ad0" value="1">Advantage</div><div class="boxme"><input type="radio" name="ad0" value="-1">Disadvantage</div><div class="clear">&nbsp;</div></div>
+            </div>
+            <br />
+            <input type="button" class="smallButton" value="Add Die" onclick="addDie(6,2);">
+            <input type="button" class="smallButton" value="Reset" onclick="clearDice();">
+            <br />
+            <div class="clear" style="height: 20px;">&nbsp;</div>
+            <div class="head">Count:</div>
+            <!-- =<div class="smallc">
+                <input name="count" id="count" value="99999"><br>
+                How many iterations to run
+            </div>
+            -->
+            <div class="clear" style="height: 20px;">&nbsp;</div>
+
+            <input type="button" class="biggerButton" onclick="totals( buildDice(), 999999, $('#out'));" value="Go">
+        </div>
+        <div class="contain" style="padding: 8px 10px 8px 10px;">
+<table style="float: left; margin-right: 15px">
+<tbody><tr><th class="myth">Score</th><th class="myth">Dice</th></tr>
+<tr><td class="mytd0">1</td><td class="mytd0">d4</td></tr>
+<tr><td class="mytd1">2</td><td class="mytd1">d6</td></tr>
+<tr><td class="mytd2">3</td><td class="mytd2">d8</td></tr>
+<tr><td class="mytd0">4</td><td class="mytd0">d10</td></tr>
+<tr><td class="mytd1">5</td><td class="mytd1">2d6</td></tr>
+</tbody></table>
+<table style="float: left">
+<tbody><tr><th class="myth">Score</th><th class="myth">Dice</th></tr>
+<tr><td class="mytd2">6</td><td class="mytd2">2d8</td></tr>
+<tr><td class="mytd0">7</td><td class="mytd0">2d10</td></tr>
+<tr><td class="mytd1">8</td><td class="mytd1">3d8</td></tr>
+<tr><td class="mytd2">9</td><td class="mytd2">3d10</td></tr>
+</tbody></table>
+	</div>
+        <div class="clear">&nbsp;</div>
+        <div class="out" id="out"></div>
+
+    </div>
+
+</body></html>
